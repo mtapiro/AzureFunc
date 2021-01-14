@@ -15,4 +15,7 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist &quot;$(ProjectDir)obj\$(ConfigurationName)&quot; mkdir &quot;$(ProjectDir)obj\$(ConfigurationName)&quot;&#xD;&#xA;xcopy  &quot;$(ProjectDir)obj\$(PlatformName)\$(ConfigurationName)&quot; &quot;$(ProjectDir)obj\$(ConfigurationName)&quot; /E /R /Y&#xD;&#xA;dotnet publish &quot;$(ProjectFileName)&quot;  --no-build -c $(ConfigurationName) -o ..\..\pub --no-restore --no-dependencies&#xD;&#xA;" />
+  </Target>
 </Project>
