@@ -32,7 +32,7 @@ namespace HelloFunc
         }
 
 
-        [FunctionName("SendMeTheDate")]
+        [FunctionName("SayHello")]
         public static async Task<IActionResult> Run2(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
